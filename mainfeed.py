@@ -1,18 +1,25 @@
 import praw
 
+account_username = "MikuYagami"
+account_password = "1234qazw0987"
+account_client_id = "cIPXWVlMAx5W3g"
+account_client_secret = "DGvA0oHtrx_vmna3ZcHwv69QVHU"
+
+sub_reddit = "ZumBIDO"
+
 # reddit = praw.Reddit(client_id="tpOt927_JHB-PA",
 # 					 client_secret="d4VA65AlqNtVev3TxIGhKuqhrIg",
 # 					 username="RanonS",
 # 					 password="1234qazw0987",
 # 					 user_agent="KarmaBot by /u/RanonS")
 
-reddit = praw.Reddit(client_id="cIPXWVlMAx5W3g",
-					 client_secret="DGvA0oHtrx_vmna3ZcHwv69QVHU",
-					 username="MikuYagami",
-					 password="1234qazw0987",
+reddit = praw.Reddit(client_id=account_client_id,
+					 client_secret=account_client_secret,
+					 username=account_username,
+					 password=account_password,
 					 user_agent="KarmaBot by /u/RanonS")
 
-subreddit = reddit.subreddit("ZumBIDO")
+subreddit = reddit.subreddit(sub_reddit)
 
 def check_string_list(string, list_array):
 	for filter in list_array:
@@ -55,7 +62,7 @@ print("[+] Bot Started")
 while True:
 	try :
 		reddit_posts = subreddit.new(limit=1)
-		account_posts = list(reddit.redditor('MikuYagami').submissions.new(limit=1))[0]
+		account_posts = list(reddit.redditor(account_username).submissions.new(limit=1))[0]
 
 		for submissions in reddit_posts:
 			if not submissions.stickied:
